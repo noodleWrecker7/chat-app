@@ -3,11 +3,64 @@ export default {
     general:
       {
         displayName: 'General',
+        connectedUsers: ['John', 'Luke'],
         messages: [{
           senderName: 'John',
           time: 20,
-          text: 'Hello World!'
-        }]
+          text: 'Hello World!',
+          id: 0
+        }, {
+          senderName: 'John',
+          time: 20,
+          text: 'Hello World!',
+          id: 0
+        }, {
+          senderName: 'John',
+          time: 20,
+          text: 'Hello World!',
+          id: 0
+        }, {
+          senderName: 'John',
+          time: 20,
+          text: 'Hello World!',
+          id: 0
+        }, {
+          senderName: 'John',
+          time: 20,
+          text: 'Hello World!',
+          id: 0
+        }, {
+          senderName: 'John',
+          time: 20,
+          text: 'Hello World!',
+          id: 0
+        }, {
+          senderName: 'John',
+          time: 20,
+          text: 'Hello World!',
+          id: 0
+        }, {
+          senderName: 'John',
+          time: 20,
+          text: 'Hello World!',
+          id: 0
+        }, {
+          senderName: 'John',
+          time: 20,
+          text: 'Hello World!',
+          id: 0
+        }, {
+          senderName: 'John',
+          time: 20,
+          text: 'Hello World!',
+          id: 0
+        }, {
+          senderName: 'John',
+          time: 20,
+          text: 'Hello World!',
+          id: 0
+        }
+        ]
       }
   }
 }

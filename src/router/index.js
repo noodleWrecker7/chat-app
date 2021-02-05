@@ -18,8 +18,7 @@ const routes = [
   },
   {
     path: '/chat/',
-    name: 'Chat',
-    component: Chat
+    redirect: '/chat/general'
   }
 ]
 

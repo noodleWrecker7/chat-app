@@ -12,6 +12,7 @@ try {
 } catch (e) {
   console.log('OOOOOH NOOOO BIG BAD BOO BOO ERROR THE SERVER NO CONNECTY')
 }
+
 new Vue({
   router,
   store,
