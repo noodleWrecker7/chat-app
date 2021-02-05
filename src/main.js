@@ -6,10 +6,12 @@ import socketio from 'socket.io'
 import VueSocketIO from 'vue-socket.io'
 
 Vue.config.productionTip = false
-export const SocketInstance = socketio('https://msg.noodlewrecker.net')
-Vue.use(SocketInstance, VueSocketIO)
-
-
+try {
+  const SocketInstance = socketio('https://msg.noodlewrecker.net')
+  Vue.use(SocketInstance, VueSocketIO)
+} catch (e) {
+  console.log('OOOOOH NOOOO BIG BAD BOO BOO ERROR THE SERVER NO CONNECTY')
+}
 new Vue({
   router,
   store,
