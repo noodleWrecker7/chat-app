@@ -1,6 +1,9 @@
 <template>
   <div>Chat
-    <ChatRoom :room='rooms[$route.params.room]'/>
+    <ChatRoom v-if='rooms[$route.params.room].displayName' :room='rooms[$route.params.room]'/>
+    <div v-else>Room not found
+      <router-link to='/chat/general'>Return to general</router-link>
+    </div>
   </div>
 </template>
 
@@ -15,7 +18,11 @@ export default {
     ...mapState([
       'rooms'
     ])
+  },
+  mounted () {
+    // todo update state to get room before its added to dom
   }
+
 }
 </script>
 

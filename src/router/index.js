@@ -15,6 +15,11 @@ const routes = [
     path: '/chat/:room',
     name: 'Chat',
     component: Chat
+  },
+  {
+    path: '/chat/',
+    name: 'Chat',
+    component: Chat
   }
 ]
 
