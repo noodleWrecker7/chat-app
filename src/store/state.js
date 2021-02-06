@@ -9,56 +9,6 @@ export default {
           time: 20,
           text: 'Hello World!',
           id: 0
-        }, {
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
-        }, {
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
-        }, {
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
-        }, {
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
-        }, {
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
-        }, {
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
-        }, {
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
-        }, {
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
-        }, {
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
-        }, {
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
         }
         ]
       }

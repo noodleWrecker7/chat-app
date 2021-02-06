@@ -1,6 +1,14 @@
 const app = require('express')()
 const http = require('http').createServer(app)
-const io = require('socket.io')(http)
+const io = require('socket.io')(http, {
+  cors: {
+    origin: 'http://localhost:8080',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['my-custom-header'],
+    credentials: true,
+    allowEIO3: true
+  }
+})
 const mongoClient = require('mongodb').MongoClient // to store the db info
 
 app.get('/', (req, res) => {
@@ -9,11 +17,13 @@ app.get('/', (req, res) => {
 
 var port = 6969
 
-http.listen(6969, () => {
-  console.log('listening on 6969')
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080') // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Headers', '*')
+  next()
 })
 
-mongoClient.connect('mongodb+srv://admin:OLfFPB05wIVvyzRL@cluster0.nf61a.mongodb.net/Cluster0?retryWrites=true&w=majority', {
+mongoClient.connect('mongodb+srv://apiuser:PvjO6hwgqsjgRbgr@cluster0.nf61a.mongodb.net/Emissary?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, (err, db) => { // connects to db
@@ -21,17 +31,35 @@ mongoClient.connect('mongodb+srv://admin:OLfFPB05wIVvyzRL@cluster0.nf61a.mongodb
 
   // routes go here
 
-  io.on('connection', (socket) => {
+  io.on('connection', socket => {
     console.log('a user connected')
 
-    socket.on('registerName', function (data) {
-      console.log(data)
-    })
-  })
+    socket.on('registerName', SOCK_registerName)
 
-  app.listen(port, () => { // begins listen
-    console.log('Listening on ' + port)
+    socket.on('messagetoserver', (data) => {
+      SOCK_messagetoserver(socket, data)
+    })
   })
 })
 
-function SOCK_registerName
+http.listen(port, () => { // begins listen
+  console.log('Listening on ' + port)
+})
+
+// eslint-disable-next-line camelcase
+function SOCK_messagetoserver (socket, data) {
+  console.log(socket.id)
+}
+
+// eslint-disable-next-line camelcase
+function SOCK_registerName (socket, data) {
+  console.log(data)
+  return false
+}
+
+function runDevCommand (cmd) {
+  // eslint-disable-next-line no-eval
+  eval(cmd)
+}
+
+global.dev = runDevCommand

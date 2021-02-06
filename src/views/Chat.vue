@@ -19,7 +19,7 @@ export default {
   methods: {
     sendMessage (body) {
       console.log('sending message' + body + this.$route.params.room)
-      this.$socket.emit('message', { room: this.$route.params.room, body: body })
+      this.$socket.emit('messagetoserver', { room: this.$route.params.room, body: body })
     }
   },
   components: { ChatRoom },
