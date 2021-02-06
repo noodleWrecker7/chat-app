@@ -1,17 +1,16 @@
 export default {
-  SOCKET_connect (state) {
-    state.isConnected = true
+  SOCKET_connect (context) {
     console.log('aconnect')
-    state.rooms.general.displayName = 'hi'
+    context.displayName = 'hi'
   },
 
-  SOCKET_disconnect (state) {
-    state.isConnected = false
+  SOCKET_disconnect (context) {
     console.log('adc')
   },
 
-  SOCKET_HELLO (state, message) {
-    state.rooms.general.displayName = 'hi'
+  SOCKET_messagetoclient (context, message) {
     console.log('a', message)
+    context.commit('insertMessage', message)
   }
+
 }

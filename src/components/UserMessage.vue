@@ -1,10 +1,10 @@
 <template>
   <div class="message-container">
     <div class="message-send-data">
-      <h5 class="sender-name">{{ message.senderName }}:</h5>
+      <h5 class="sender-name">{{ message.name }}:</h5>
       <h6 class="sent-time"> {{ message.time }}</h6>
     </div>
-    <p class="message-body">{{ message.text }}</p>
+    <p class="message-body">{{ message.body }}</p>
   </div>
 </template>
 

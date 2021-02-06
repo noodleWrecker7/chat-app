@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-    <UserList id='users-list' :connected-users="room.connectedUsers"/>
+    <UserList id='users-list' :connected-users="connectedUsers"/>
 
     <div id="messages-section">
-      <p id="room-title">{{ room.displayName }}</p>
+      <p id="room-title">{{ displayName }}</p>
       <div id="messages">
-        <UserMessage :key='index' v-for="(message, index) in room.messages" :message="message"></UserMessage>
+        <UserMessage :key='index' v-for="(message, index) in messages" :message="message"></UserMessage>
       </div>
       <div id="send-message-section"><textarea v-model="textBody"></textarea>
         <!--        <div class="send-icon-container">-->
-        <i @click="sendMessage(textBody)" class="fas fa-paper-plane send-icon"></i>
+        <i @click="sendMessage()" class="fas fa-paper-plane send-icon"></i>
         <!--      </div>-->
       </div>
     </div>
@@ -19,6 +19,7 @@
 <script>
 import UserMessage from '@/components/UserMessage'
 import UserList from '@/components/UserList'
+import { mapState } from 'vuex'
 
 export default {
   name: 'ChatRoom',
@@ -29,9 +30,30 @@ export default {
     UserList,
     UserMessage
   },
+  computed: {
+    ...mapState([
+      'messages',
+      'connectedUsers',
+      'displayName'
+    ])
+  },
   props: {
     room: Object,
-    sendMessage: Function
+    username: String
+  },
+  methods: {
+    sendMessage () {
+      console.log('sending message' + this.textBody)
+      this.$socket.emit('messagetoserver', {
+        body: this.textBody,
+        name: this.username,
+        time: new Date().toTimeString()
+      })
+      this.textBody = ''
+    }
+    /* ...mapActions([
+  ''
+]) */
   }
 }
 </script>

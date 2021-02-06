@@ -1,16 +1,11 @@
 export default {
-  rooms: {
-    general:
-      {
-        displayName: 'General',
-        connectedUsers: ['John', 'Luke'],
-        messages: [{
-          senderName: 'John',
-          time: 20,
-          text: 'Hello World!',
-          id: 0
-        }
-        ]
-      }
+  displayName: 'General',
+  connectedUsers: ['The', 'User', 'List', 'Is', 'Not', 'Yet', 'Functional'],
+  messages: [{
+    name: 'Server',
+    time: 'Eternity',
+    body: 'Hello World!'
   }
+  ],
+  userName: 'Adam'
 }

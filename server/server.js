@@ -37,7 +37,7 @@ mongoClient.connect('mongodb+srv://apiuser:PvjO6hwgqsjgRbgr@cluster0.nf61a.mongo
     socket.on('registerName', SOCK_registerName)
 
     socket.on('messagetoserver', (data) => {
-      SOCK_messagetoserver(socket, data)
+      SOCK_messagetoserver(socket, data, db)
     })
   })
 })
@@ -47,8 +47,16 @@ http.listen(port, () => { // begins listen
 })
 
 // eslint-disable-next-line camelcase
-function SOCK_messagetoserver (socket, data) {
+async function SOCK_messagetoserver (socket, data, db) {
   console.log(socket.id)
+  socket.emit('messagetoclient', data)
+  const messageDoc = {
+    senderName: data.sender,
+    time: new Date().toTimeString(),
+    text: data.body
+  }
+  const result = await db.db('Emissary').collection('Messages').insertOne(messageDoc)
+  console.log(result.insertedId)
 }
 
 // eslint-disable-next-line camelcase
