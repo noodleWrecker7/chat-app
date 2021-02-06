@@ -12,13 +12,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/chat/:room',
+    path: '/chat/',
     name: 'Chat',
     component: Chat
-  },
-  {
-    path: '/chat/',
-    redirect: '/chat/general'
   }
 ]
 
