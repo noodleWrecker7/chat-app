@@ -4,7 +4,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/chat">Chat</router-link>
     </div>-->
-    <router-view/>
+<!--    <router-view/>-->
+    <chat/>
   </div>
 </template>
 
@@ -35,3 +36,9 @@
   color: #42b983;
 }
 </style>
+<script>
+import Chat from '@/views/Chat'
+export default {
+  components: { Chat }
+}
+</script>
