@@ -49,7 +49,7 @@ http.listen(port, () => { // begins listen
 // eslint-disable-next-line camelcase
 async function SOCK_messagetoserver (socket, data, db) {
   console.log(socket.id)
-  socket.emit('messagetoclient', data)
+  io.emit('messagetoclient', data)
   const messageDoc = {
     senderName: data.sender,
     time: new Date().toTimeString(),
